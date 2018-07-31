@@ -1,0 +1,102 @@
+﻿Build1=Default,desof.appbase.test
+File1=banner.jpg
+File10=splash.jpg
+File2=facebook_0.png
+File3=facebook_1.png
+File4=google_0.png
+File5=google_1.png
+File6=img_login.jpg
+File7=login.bal
+File8=Main.bal
+File9=splash.bal
+FileGroup1=Default Group
+FileGroup10=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+FileGroup8=Default Group
+FileGroup9=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+Library2=appcompat
+Library3=firebaseauth
+Library4=phone
+Library5=firebasenotifications
+Library6=network
+Library7=facebook
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="27"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~	~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~~\n~'********* TEMA **********************~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#0098FF</item>~\n~        <item name="colorPrimaryDark">#007CF5</item>~\n~        <item name="colorAccent">#AAAA00</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~    </style>~\n~</resources>~\n~)~\n~'*************** FIN TEMA ******************~\n~~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.GooglePlayBase)~\n~CreateResourceFromFile(Macro, FirebaseAnalytics.Firebase)~\n~CreateResourceFromFile(Macro, FirebaseNotifications.FirebaseNotifications)~\n~CreateResourceFromFile(Macro, FirebaseAuth.FirebaseAuth)~\n~~\n~'************ Firebase Base ************~\n~CreateResourceFromFile("google-services", "google-services.json")~\n~AddPermission(android.permission.ACCESS_NETWORK_STATE)~\n~AddPermission(android.permission.INTERNET)~\n~AddPermission(android.permission.WAKE_LOCK)~\n~AddPermission(com.google.android.c2dm.permission.RECEIVE)~\n~AddPermission(${applicationId}.permission.C2D_MESSAGE)~\n~AddManifestText( <permission android:name="${applicationId}.permission.C2D_MESSAGE"~\n~        android:protectionLevel="signature" />)~\n~AddApplicationText(~\n~<receiver~\n~          android:name="com.google.android.gms.measurement.AppMeasurementReceiver"~\n~          android:enabled="true">~\n~        <intent-filter>~\n~          <action android:name="com.google.android.gms.measurement.UPLOAD"/>~\n~        </intent-filter>~\n~      </receiver>~\n~~\n~      <service~\n~          android:name="com.google.android.gms.measurement.AppMeasurementService"~\n~          android:enabled="true"~\n~          android:exported="false"/>	~\n~	<provider~\n~            android:authorities="${applicationId}.firebaseinitprovider"~\n~            android:name="com.google.firebase.provider.FirebaseInitProvider"~\n~            android:exported="false"~\n~            android:initOrder="100" />~\n~	  <receiver~\n~          android:name="com.google.android.gms.measurement.AppMeasurementReceiver"~\n~          android:enabled="true">~\n~        <intent-filter>~\n~          <action android:name="com.google.android.gms.measurement.UPLOAD"/>~\n~        </intent-filter>~\n~      </receiver>~\n~~\n~      <service~\n~          android:name="com.google.android.gms.measurement.AppMeasurementService"~\n~          android:enabled="true"~\n~          android:exported="false"/>~\n~	<receiver~\n~            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"~\n~            android:exported="true"~\n~            android:permission="com.google.android.c2dm.permission.SEND" >~\n~            <intent-filter>~\n~                <action android:name="com.google.android.c2dm.intent.RECEIVE" />~\n~                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />~\n~                <category android:name="${applicationId}" />~\n~            </intent-filter>~\n~        </receiver>~\n~	   <receiver~\n~            android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"~\n~            android:exported="false" />~\n~~\n~    ~\n~        <service~\n~            android:name="com.google.firebase.iid.FirebaseInstanceIdService"~\n~            android:exported="true">~\n~            <intent-filter android:priority="-500">~\n~                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />~\n~            </intent-filter>~\n~        </service>~\n~)~\n~'************ (end) ************~\n~~\n~'************ Facebook Login ****************~\n~AddApplicationText(<activity android:name="com.facebook.FacebookActivity"~\n~          android:configChanges=~\n~                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"~\n~          android:theme="@android:style/Theme.Translucent.NoTitleBar" />~\n~		   <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>)~\n~CreateResource(values, facebook.xml, <resources>~\n~	 <string name="facebook_app_id">164845420672631</string>~\n~	</resources>)~\n~'************ (end) **********~\n~~\n~'************ Firebase Auth ************~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"~\n~                  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~                  android:excludeFromRecents="true"~\n~                  android:exported="false" />~\n~~\n~        <service~\n~            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"~\n~            android:exported="true"~\n~            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />~\n~)~\n~'************(end) ************~\n~~\n~~\n~'************ (end) **********~\n~
+Module1=Login
+Module2=Principal
+Module3=Starter
+Module4=FirebaseMessaging
+Module5=Funciones
+NumberOfFiles=10
+NumberOfLibraries=7
+NumberOfModules=5
+Version=8.3
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: BASE_APP
+	#VersionCode: 1
+	#VersionName: 1.01	
+	#SupportedOrientations: portrait
+	#CanInstallToExternalStorage: False
+#End Region
+
+#AdditionalRes: "..\resource"
+
+#Region  Activity Attributes 
+	#FullScreen: True
+	#IncludeTitle: False
+#End Region
+
+Sub Process_Globals
+	'
+End Sub
+
+Sub Globals
+	
+	'	
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+
+	Activity.LoadLayout("splash")					'<< CARGAMOS EL LAYOUT SPLASH QUE MUESTRA LA IMAGEN DE LA APP
+	
+	If FirstTime Then 						'<< PRIMER INGRESO
+		
+		Starter.auth.Initialize("auth") 			'<< INICIALIZA Y DEVUELVE SI EXISTE UN LOGUE ACTIVO
+		Sleep (5000)					      '<< PAUSA DE 5 SEGUNDOS
+		If Starter.auth.CurrentUser.IsInitialized Then			
+			CallSubDelayed (Principal,"Initialize") 	'<< YA EXISTE UN LOGUEO ACTIVO LLAMAMOS A LA ACTIVIDAD PRINCIPAL
+			Activity.Finish 					'<< FINALIZAMOS LA ACTIVIDAD DE ENTRADA 
+		Else			
+			Funciones.LOGUEANDO=True 			'<< ASIGNAMOS LA VARIABLE PARA CONOCER EN EL MODULO Starter.Auth_SignedIn 
+			CallSubDelayed (Login,"Initialize")		'<< LLAMAMOS A LA VENTANA DE LOGIN		
+			Activity.Finish					'<< FINALIZAMOS LA ACTIVIDAD DE ENTRADA
+		End If
+	Else
+		If Starter.auth.CurrentUser.IsInitialized Then
+			CallSubDelayed (Principal,"Initialize") 	'<< YA EXISTE UN LOGUEO ACTIVO LLAMAMOS A LA ACTIVIDAD PRINCIPAL
+			Activity.Finish 					'<< FINALIZAMOS LA ACTIVIDAD DE ENTRADA
+		Else			
+			ExitApplication					'<< SI HAY LOGUEO ACTIVO CERRAMOS LA APP
+		End If
+	End If
+	
+end  Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+
+
